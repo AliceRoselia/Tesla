@@ -96,3 +96,27 @@ function print_board(board::Board)
         end
     end
 end
+
+mutable struct Move<:AbstractMove 
+    data::UInt32
+end
+
+Move(starting_square::Integer, ending_square::Integer, board::Board) = Move(UInt32(starting_square),UInt32(ending_square),board)
+
+function Move(starting_square::UInt32, ending_square::UInt32, board::Board, onebasedindexing = true)
+    starting_square -= onebasedindexing
+    ending_square -= onebasedindexing
+
+    return Move((starting_square<<26 )| (ending_square<<20) | pieceon(starting_square,board), pieceon())
+end
+
+function promote_Move(starting_square::UInt32, ending_square::UInt32, board::Board,promotedPiece = QUEEN, onebasedindexing = true)
+
+function is_legal(move::Move, board::Board)
+    #An expensive check whether or not the move is legal.
+    working in progress.
+end
+
+function is_not_suicide(move::Move, board::Board)
+    #Assumes the move is otherwise legal. Doesn't put yourself in check.
+end

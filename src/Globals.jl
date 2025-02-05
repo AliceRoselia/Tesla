@@ -36,3 +36,11 @@ const char2bits = Dict{Char,NTuple{5,Bool}}((
 )
 
 const bits2char = Dict{NTuple{6,Bool},Char}([((j...,isuppercase(i)),i) for (i,j) in char2bits])
+
+const EMPTYSQUARE = UInt32(0)
+const PAWN = UInt32(1)
+const KNIGHT =UInt32(2)
+const BISHOP = UInt32(3)
+const ROOK = UInt32(4)
+const QUEEN = UInt32(5)
+const KING = UInt32(6)
